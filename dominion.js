@@ -12,6 +12,8 @@ var player_count = 0;
 // Places to print number of cards and points.
 var deck_spot;
 var points_spot;
+// List of the cards currently in your deck.
+var deck_list_spot;
 
 var started = false;
 var introduced = false;
@@ -191,6 +193,17 @@ function Player(name) {
   }
 
   this.getDeckString = function() {
+    var str = "D:";
+    var cards = [];
+    for (var card in this.card_counts) {
+      if (this.card_counts.hasOwnProperty(card)) {
+        cards.push(card + ":" + this.card_counts[card]);
+      }
+    }
+    str += "[" + cards.join(", ") + "]";
+    return str;
+  }
+/*
     var str = this.deck_size;
     var need_action_string = (show_action_count && this.special_counts["Actions"]);
     var need_unique_string = (show_unique_count && this.special_counts["Uniques"]);
@@ -210,6 +223,7 @@ function Player(name) {
     }
     return str;
   }
+*/
 
   this.changeScore = function(points) {
     this.score = this.score + parseInt(points);
@@ -287,6 +301,7 @@ function Player(name) {
     last_gain_player = this;
     count = parseInt(count);
     this.deck_size = this.deck_size + count;
+      
 
     var singular_card_name = getSingularCardName(card.innerText);
     this.changeScore(pointsForCard(singular_card_name) * count);
@@ -804,7 +819,8 @@ function maybeRewriteName(doc) {
 
 function maybeIntroducePlugin() {
   if (!introduced && !disabled) {
-    writeText("★ Game scored by Dominion Point Counter ★");
+    writeText("★ Game scored by Dominion Card Counter ★");
+    writeText("★ Game scored by Dominion Card Counter ★");
     writeText("http://goo.gl/iDihS");
     writeText("Type !status to see the current score.");
     if (localStorage["allow_disable"] != "f") {
@@ -1084,7 +1100,7 @@ function handle(doc) {
   if (doc.className && doc.className == "constr") {
     $('#tracker').attr('checked', true).attr('disabled', true);
     $('#autotracker').val('yes').attr('disabled', true);
-  }
+ }
 
   if (rewritingTree > 0) {
     return;

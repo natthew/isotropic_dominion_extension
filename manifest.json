@@ -5,10 +5,6 @@
        "matches": [ "http://dominion.isotropic.org/play" ]
      },
      {
-       "js": [ "jquery.js", "card_list.js", "dominion.js", "debugger.js" ],
-       "matches": [ "http://*.dominion-point-counter.appspot.com/debug*" ]
-     },
-     {
        "js": [ "jquery.js", "options.js" ],
        "matches": [ "http://dominion.isotropic.org/" ]
      },
@@ -18,11 +14,10 @@
      }
    ],
    "permissions": [
-     "http://dominion.isotropic.org/",
-     "http://dominion-point-counter.appspot.com/"
+     "http://dominion.isotropic.org/"
    ],
-   "description": "Dominion Point Counter",
-   "name": "Dominion Point Counter",
+   "description": "Dominion Card and Point Counter",
+   "name": "Dominion Card and Counter",
    "background_page": "background.html",
-   "version": "4.2"
+   "version": "0.1"
 }

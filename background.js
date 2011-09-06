@@ -20,6 +20,7 @@ function handleFetchRequest(request, sendResponse) {
 
 chrome.extension.onRequest.addListener(
 function(request, sender, sendResponse) {
+/*
   var type = request.type;
   delete request.type;
 
@@ -33,4 +34,5 @@ function(request, sender, sendResponse) {
     console.log("Unknown request type '" + type + "' in: " +
                 JSON.stringify(request));
   }
+*/
 });
